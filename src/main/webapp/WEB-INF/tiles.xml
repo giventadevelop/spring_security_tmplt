@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+
+<tiles-definitions>
+
+	<definition name="main_layout" template="/WEB-INF/layouts/main_layout.jsp">
+		<put-attribute name="title" value="Demo Page" />
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
+	
+	<definition name="index" extends="main_layout">
+		<put-attribute name="body" value="/WEB-INF/tiles/main.jsp" />
+	</definition>
+	
+	<definition name="login" extends="main_layout">
+		<put-attribute name="body" value="/WEB-INF/tiles/main.jsp" />
+	</definition>
+	
+	<definition name="loginsuccess" extends="main_layout">
+		<put-attribute name="body" value="/WEB-INF/tiles/loginsuccess.jsp" />
+	</definition>
+	
+	<definition name="logout" extends="main_layout">
+		<put-attribute name="body" value="/WEB-INF/tiles/logout.jsp" />
+	</definition>
+	
+	<definition name="session" extends="main_layout">
+		<put-attribute name="body" value="/WEB-INF/tiles/session.jsp" />
+	</definition>
+	
+	<definition name="protectedpage" extends="main_layout">
+		<put-attribute name="body" value="/WEB-INF/tiles/protected_page.jsp" />
+	</definition>
+
+</tiles-definitions>

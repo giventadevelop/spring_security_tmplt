@@ -24,6 +24,10 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
 	
 	 @Autowired
 	 private CustomAuthenticationProvider customAuthenticationProvider;
+	 
+	 @Autowired
+	 CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+	 
 	 @Autowired
 	 private UserDetailsService userDetailsService;
 	 
@@ -33,7 +37,7 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
 	 @Autowired
 	 DataSource dataSource;
 
-    private AuthenticationProvider authenticationProvider;
+   /* private AuthenticationProvider authenticationProvider;
 
     @Autowired
     @Qualifier("daoAuthenticationProvider")
@@ -41,12 +45,7 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
         this.authenticationProvider = authenticationProvider;
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder(StrongPasswordEncryptor passwordEncryptor){
-        PasswordEncoder passwordEncoder = new PasswordEncoder();
-        passwordEncoder.setPasswordEncryptor(passwordEncryptor);
-        return passwordEncoder;
-    }
+  
 
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider(PasswordEncoder passwordEncoder,
@@ -56,7 +55,14 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
         daoAuthenticationProvider.setUserDetailsService(userDetailsService);
         return daoAuthenticationProvider;
-    }
+    }*/
+	 
+	  @Bean
+	    public PasswordEncoder passwordEncoder(StrongPasswordEncryptor passwordEncryptor){
+	        PasswordEncoder passwordEncoder = new PasswordEncoder();
+	        passwordEncoder.setPasswordEncryptor(passwordEncryptor);
+	        return passwordEncoder;
+	    }
 
     @Autowired
     public void configureAuthManager(AuthenticationManagerBuilder authenticationManagerBuilder,PasswordEncoder passwordEncoder){
@@ -73,7 +79,7 @@ public class SpringSecConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/","/products","/product/show/*","/session","/logout","/console/*","/h2-console/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").permitAll()
+                .formLogin().successHandler(new CustomAuthenticationSuccessHandler()).loginPage("/login").permitAll()
                 .and()
                // .logout().logoutSuccessUrl("/login").permitAll().and()
                 //.rememberMe().rememberMeParameter("remember-me").rememberMeCookieName("remember-me").tokenValiditySeconds(86400).alwaysRemember(true);

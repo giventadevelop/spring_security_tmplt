@@ -35,6 +35,10 @@ public class CustomAuthenticationProvider  implements AuthenticationProvider  {
 			throw new BadCredentialsException("The Password entered is not correct.");
 		}*/
 		
+		if(user.getUsername()==null || user.getUsername().isEmpty() ){
+			throw new BadCredentialsException("The user name doesn't exist.");
+		}
+		
 		if(!encryptionService.checkPassword(token.getCredentials().toString(),user.getPassword())){
 			throw new BadCredentialsException("The Password entered is not correct.");
 		}

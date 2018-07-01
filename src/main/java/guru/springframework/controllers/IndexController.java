@@ -60,6 +60,22 @@ public class IndexController {
         return "session";
     }
     
+    
+    @RequestMapping("/loginsuccess")
+    String loginsuccess(HttpServletRequest request,HttpServletResponse response){
+    	
+    	
+        return "loginsuccess";
+    }
+    
+    
+    @RequestMapping("/protectedpage")
+    String protectedpage(HttpServletRequest request,HttpServletResponse response){
+    	
+    	
+        return "protectedpage";
+    }
+    
     @RequestMapping("/logout")
     String logout(HttpServletRequest request,HttpServletResponse response){
     	

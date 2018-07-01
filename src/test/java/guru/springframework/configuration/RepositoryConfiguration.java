@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
+/*@Configuration
 @EnableAutoConfiguration
 @EntityScan(basePackages = {"guru.springframework.domain"})
 @EnableJpaRepositories(basePackages = {"guru.springframework.repositories"})
-@EnableTransactionManagement
+@EnableTransactionManagement*/
 public class RepositoryConfiguration {
 }
